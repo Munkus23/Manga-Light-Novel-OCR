@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Gemini OCR & Translation Web Server
 
 This project provides a web-based interface for performing Optical Character Recognition (OCR) on Japanese images (like manga or light novels) and translating the extracted text to English. It leverages either Tesseract.js for local OCR or the Google Gemini API for more advanced OCR and translation capabilities.
@@ -73,3 +74,6 @@ The server will start on `http://localhost:3000`.
 *   **API Key Security:** As mentioned, always use environment variables for your API keys. Never commit them directly to your code repository.
 *   **Rate Limits:** Be mindful of Google Gemini API rate limits. If you anticipate high usage, consider implementing caching or other strategies to optimize API calls.
 *   **Hosting:** This is a Node.js application, so it can be hosted on various platforms that support Node.js (e.g., Vercel, Render, Heroku, AWS, Google Cloud).
+=======
+
+>>>>>>> 13ef5107dd165aaecb73ba838ae53812cc82ac72
