@@ -96,7 +96,7 @@ app.post('/translate', async (req, res) => {
 
     try {
         const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: geminiModel });
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
         const result = await model.generateContent(`Translate the following Japanese text to English: ${text}`);
         const response = await result.response;

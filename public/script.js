@@ -1,4 +1,4 @@
-
+const apiKeyInput = document.getElementById('apiKey');
 const imageLoader = document.getElementById('imageLoader');
 const uploadBtn = document.getElementById('uploadBtn');
 const translateBtn = document.getElementById('translateBtn');
@@ -42,13 +42,12 @@ translateBtn.addEventListener('click', () => {
         return;
     }
 
-    const formData = new FormData();
-    formData.append('text', text);
-    formData.append('geminiModel', geminiModelSelect.value);
-
     fetch('/translate', {
         method: 'POST',
-        body: formData
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: text, geminiModel: geminiModelSelect.value })
     })
     .then(response => response.text())
     .then(translatedText => {
