@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini OCR & Translate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gemini OCR & Translate</h1>
+        
+        <div class="ocr-engine-selection">
+            <label>OCR Engine:</label>
+            <input type="radio" id="ocrTesseract" name="ocrEngine" value="tesseract" checked>
+            <label for="ocrTesseract">Tesseract.js</label>
+            <input type="radio" id="ocrGeminiApi" name="ocrEngine" value="geminiApi">
+            <label for="ocrGeminiApi">Gemini API</label>
+        </div>
+        <div class="model-selection">
+            <label for="geminiModel">Gemini Model:</label>
+            <select id="geminiModel">
+                <option value="gemini-1.5-flash">gemini-1.5-flash (Stable)</option>
+                <option value="gemini-2.5-pro">gemini-2.5-pro (Latest)</option>
+            </select>
+        </div>
+        <div class="upload-container">
+            <input type="file" id="imageLoader" name="image" accept="image/png, image/jpeg, image/jpg, image/webp"/>
+            <button id="uploadBtn">Upload & OCR</button>
+        </div>
+        <div class="translation-container">
+            <button id="translateBtn">Translate to English</button>
+        </div>
+        <div class="result-container">
+            <textarea id="resultText" rows="20"></textarea>
+        </div>
+        <div class="export-container">
+            <button id="exportTxtBtn">Export as .txt</button>
+            <button id="exportXlsxBtn">Export as .xlsx</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
