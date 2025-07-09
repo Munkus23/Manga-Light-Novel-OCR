@@ -92,6 +92,7 @@ exportTxtBtn.addEventListener('click', () => {
     .catch(error => {
         console.error('Error:', error);
         alert('Error exporting to .txt');
+    };
     });
 });
 
