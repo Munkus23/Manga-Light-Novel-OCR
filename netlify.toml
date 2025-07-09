@@ -1,0 +1,13 @@
+[build]
+  functions = "netlify/functions"
+  publish = "public"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["tesseract.js"] # Ensure tesseract.js is bundled correctly
+  node_version = "18" # Or a version compatible with your project
+
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200

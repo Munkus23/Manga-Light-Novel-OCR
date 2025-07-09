@@ -8,6 +8,7 @@ const exportXlsxBtn = document.getElementById('exportXlsxBtn');
 const ocrTesseract = document.getElementById('ocrTesseract');
 const ocrGeminiApi = document.getElementById('ocrGeminiApi');
 const geminiModelSelect = document.getElementById('geminiModel');
+const tesseractLanguageSelect = document.getElementById('tesseractLanguage');
 
 uploadBtn.addEventListener('click', () => {
     const file = imageLoader.files[0];
@@ -16,15 +17,20 @@ uploadBtn.addEventListener('click', () => {
         return;
     }
 
-    const formData = new FormData();
-    formData.append('image', file);
-    formData.append('ocrEngine', ocrTesseract.checked ? 'tesseract' : 'geminiApi');
-    formData.append('geminiModel', geminiModelSelect.value);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        const imageData = reader.result; // Base64 encoded image data
+        const ocrEngine = ocrTesseract.checked ? 'tesseract' : 'geminiApi';
+        const geminiModel = geminiModelSelect.value;
+        const tesseractLanguage = tesseractLanguageSelect.value;
 
-    fetch('/upload', {
-        method: 'POST',
-        body: formData
-    })
+        fetch('/.netlify/functions/ocr', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ image: imageData, ocrEngine: ocrEngine, geminiModel: geminiModel, tesseractLanguage: tesseractLanguage })
+        })
     .then(response => response.text())
     .then(text => {
         resultText.value = text;
@@ -42,7 +48,7 @@ translateBtn.addEventListener('click', () => {
         return;
     }
 
-    fetch('/translate', {
+    fetch('/.netlify/functions/translate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
