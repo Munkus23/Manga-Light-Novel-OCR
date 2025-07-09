@@ -3,9 +3,12 @@
   publish = "public"
 
 [functions]
-  node_bundler = "esbuild"
-  external_node_modules = ["tesseract.js"] # Ensure tesseract.js is bundled correctly
-  node_version = "20" # Or a version compatible with your project
+
+    [functions.node_version]
+    external_node_modules = [
+      "module-one",
+      "module-two"
+    ]
 
 [[redirects]]
   from = "/.netlify/functions/*"
